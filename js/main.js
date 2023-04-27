@@ -16,11 +16,10 @@ searchInput.addEventListener("keydown", function (event) {
     }
 });
 
-
 const getNews = async () => {
     try {
         let header = new Headers({
-            'x-api-key': '7Cv5_jZA0wC_iO9UzI5v4CgHYs_peS0sYE33Xh2el14'
+            'x-api-key': '2NRp2tmclI8OshjWdWw995L_pBm296oHIVXslgsNzHo'
         });
         url.searchParams.set('page', page);
         console.log('url', url)
@@ -43,9 +42,7 @@ const getNews = async () => {
         console.log('잡힌 에러는', error.message);
         errorRender(error.message);
     }
-
 }
-
 
 const getLatestNews = async () => {
     url = new URL(`https://api.newscatcherapi.com/v2/latest_headlines?countries=KR&page_size=10`);
@@ -59,14 +56,12 @@ const getNewByTopic = async (event) => {
 
     url = new URL(`https://api.newscatcherapi.com/v2/latest_headlines?countries=KR&page_size=10&topic=${topic}`);
     getNews();
-
-    console.log("토픽뉴스", data);
 }
 
 const search = async () => {
     console.log('asd');
     let keyword = searchInput.value;
-    url = new URL(`https://api.newscatcherapi.com/v2/search?q=${keyword}&page_size=10`);
+    url = new URL(`https://api.newscatcherapi.com/v2/search?countries=KR&q=${keyword}&page_size=10`);
     getNews();
 }
 
@@ -76,7 +71,7 @@ const render = () => {
     let newsHtml = ''
     newsHtml = news.map(item => {
         return `
-         <li>
+         <li onclick="location.href='https://m.segye.com/view/20230427519834'">
             <figure class="left">
                 <img src="${item.media}" alt="">
             </figure>
@@ -132,9 +127,7 @@ const pagenation = () => {
 }
 
 const moveToPage = (pageNum) => {
-    //1 이동하고싶은 페이지를 알아야함
     page = pageNum;
-    //2 이동하고싶은 페이지를 가지고 api 다시 호출
     getNews();
 }
 
