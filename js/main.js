@@ -19,7 +19,7 @@ searchInput.addEventListener("keydown", function (event) {
 const getNews = async () => {
     try {
         let header = new Headers({
-            'x-api-key': 'lw2Q3iBf4TtdNsmL3xH02JIL0h3giJTjImOTjxzqwYk'
+            'x-api-key': 'GnYFoNizppx2DF4Ll16Zcbb2476ZWUqxRHWgDym5E9E'
         });
         url.searchParams.set('page', page);
         console.log('url', url)
